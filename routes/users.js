@@ -6,11 +6,11 @@ const passport = require('passport');
 const {forwardAuthenticated} = require('../config/auth')
 
 router.get('/login', forwardAuthenticated, (req, res) => {
-    res.render("Login");
+    res.render("Login.ejs");
 });
 
 router.get('/register', forwardAuthenticated, (req, res) => {
-    res.render("register");
+    res.render("registere.ejs");
 });
 
 router.post('/register', (req, res) => {
@@ -34,7 +34,7 @@ router.post('/register', (req, res) => {
     }
 
     if(errors.length > 0){
-        res.render("register", {
+        res.render("register.ejs", {
             errors,
             name, 
             email,
@@ -48,7 +48,7 @@ router.post('/register', (req, res) => {
             if(user){
                 //User exists
                 errors.push({msg: "Email is already registered"});
-                res.render("register", {
+                res.render("register.ejs", {
                     errors,
                     name, 
                     email,

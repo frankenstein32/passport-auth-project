@@ -1,5 +1,6 @@
 // Initializing Express Object
 const express = require('express');
+const path = require('path')
 
 // Initializing Router Object
 const router = express.Router();
@@ -9,12 +10,13 @@ const { ensureAuthenticated, forwardAuthenticated } = require('../config/auth');
 
 // Welcome html page
 router.get('/', forwardAuthenticated, (req, res) => {
-    res.render("../views/Welcome");
+    console.log(__dirname);
+    res.render("Welcome.ejs");
 });
 
 // Dashboard html page
 router.get('/dashboard', ensureAuthenticated, (req, res) =>
-  res.render('dashboard', {
+  res.render('dashboard.ejs', {
     name: req.user.name
   })
 );
