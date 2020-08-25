@@ -9,7 +9,7 @@ const { ensureAuthenticated, forwardAuthenticated } = require('../config/auth');
 
 // Welcome html page
 router.get('/', forwardAuthenticated, (req, res) => {
-    res.render("Welcome");
+    res.render("../views/Welcome");
 });
 
 // Dashboard html page
